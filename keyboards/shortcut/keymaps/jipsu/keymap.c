@@ -3,16 +3,16 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[TXT] = KEYMAP(
-		KC_C, 		KC_F, 		KC_H, 		KC_P, 		TG(11), 	OSM_SFT, 	KC_SPC, 		FI_O, 		KC_G, 		KC_V, 		KC_R, 		KC_ESC, 	KC_DEL, 	KC_BSPC, 	
+		KC_C, 		KC_F, 		KC_H, 		KC_P, 		TG(F), 		OSM_SFT, 	KC_SPC, 		FI_O, 		KC_G, 		KC_V, 		KC_R, 		KC_ESC, 	KC_DEL, 	KC_BSPC, 	
 		KC_L, 		KC_I, 		KC_S, 		KC_T, 		KC_Z, 		OSM_ALT, 	KC_TAB, 		KC_U, 		KC_A, 		KC_E, 		KC_N, 		KC_B, 		FI_A, 		KC_O, 	
-		KC_X, 		KC_W, 		KC_Y, 		KC_K, 					OSM_CTR, 	TG(13), 		KC_Q, 		KC_D, 		KC_J, 		KC_M, 					TG(15), 	OSL(14), 	
-																	KC_LGUI, 	KC_ENT, 																	OSM_MEH, 	M(7)),
+		KC_X, 		KC_W, 		KC_Y, 		KC_K, 					OSM_CTR, 	TG(NUM), 		KC_Q, 		KC_D, 		KC_J, 		KC_M, 					TG(NAV), 	OSL(SYM), 	
+																	KC_LGUI, 	KC_ENT, 																	OSM_MEH, 	PILKKU,
 
 	[WASD] = KEYMAP(
-		KC_V, 		KC_4, 		KC_3, 		KC_2, 		KC_N, 		KC_LSFT, 	KC_1, 			-------, 	-------, 	KC_COMM, 	KC_DOT, 	TO(0), 		KC_VOLD, 	KC_DOWN, 	
-		KC_W, 		KC_S, 		KC_A, 		KC_D, 		KC_M, 		KC_LALT, 	KC_E, 			ATAB, 		KC_TAB, 	KC_ESC, 	KC_ENT, 	TG(12), 	-------, 	KC_RGHT, 	
-		KC_R, 		KC_Z, 		KC_X, 		KC_U, 					KC_LCTL, 	KC_SPC, 		STEAM, 		-------, 	KC_DOWN, 	-------, 				KC_VOLU, 	KC_UP, 	
-																	OSL(2), 	KC_Q, 																		-------, 	KC_LEFT),
+		KC_V, 		KC_4, 		KC_3, 		KC_2, 		KC_N, 		KC_LSFT, 	KC_1, 			-------, 	-------, 	KC_COMM, 	KC_DOT, 	TO(TXT), 	KC_VOLD, 	KC_DOWN, 	
+		KC_W, 		KC_S, 		KC_A, 		KC_D, 		KC_M, 		KC_LALT, 	KC_E, 			ATAB, 		KC_TAB, 	KC_ESC, 	KC_ENT, 	TG(TXT2), 	-------, 	KC_RGHT, 	
+		KC_R, 		KC_Z, 		KC_X, 		KC_U, 					KC_LCTL, 	KC_SPC, 		STEAM, 		-------, 	-------, 	-------, 				KC_VOLU, 	KC_UP, 	
+																	OSL(WASD2),	KC_Q, 																		-------, 	KC_LEFT),
 
 	[WASD2] = KEYMAP(
 		KC_O, 		KC_7, 		KC_6, 		KC_5, 		KC_T, 		KC_F7, 		KC_F3, 			KC_F11, 	KC_F9, 		KC_F8, 		KC_F7, 		-------, 	-------, 	-------, 	
@@ -20,37 +20,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_P, 		KC_0, 		KC_9, 		KC_8, 					KC_F5, 		KC_F1, 			KC_F12, 	KC_F3, 		KC_F2, 		KC_F1, 					-------, 	-------, 	
 																	_______, 	KC_F4, 																		-------, 	-------),
 
-	[CK2] = KEYMAP(
-		KC_X, 		KC_COMM, 	KC_DOT, 	FI_KYSY, 	KC_BSPC, 	OSM_SFT, 	KC_SPC, 		-------, 	-------, 	-------, 	-------, 	TO(0), 		KC_VOLD, 	KC_DOWN, 	
-		KC_C, 		KC_Z, 		KC_V, 		KC_B, 		KC_N, 		OSM_ALT, 	FI_PLUS, 		ATAB, 		KC_TAB, 	KC_ESC, 	KC_ENT, 	TG(12), 	-------, 	KC_RGHT, 	
-		KC_ESC, 	KC_LEFT, 	KC_RGHT, 	OSL(4), 				OSM_CTR, 	OSL(11), 		STEAM, 		-------, 	-------, 	-------, 				KC_VOLU, 	KC_UP, 	
-																	OSL(13), 	FI_MINS, 																	-------, 	KC_LEFT),
+	[CK] = KEYMAP(
+		KC_X, 		KC_COMM, 	KC_DOT, 	FI_KYSY, 	KC_BSPC, 	OSM_SFT, 	KC_SPC, 		-------, 	-------, 	-------, 	-------, 	TO(TXT), 	KC_VOLD, 	KC_DOWN, 	
+		KC_C, 		KC_Z, 		KC_V, 		KC_B, 		KC_N, 		OSM_ALT, 	FI_PLUS, 		ATAB, 		KC_TAB, 	KC_ESC, 	KC_ENT, 	TG(TXT2), 	-------, 	KC_RGHT, 	
+		KC_ESC, 	KC_LEFT, 	KC_RGHT, 	OSL(CK2), 				OSM_CTR, 	OSL(F), 		STEAM, 		-------, 	-------, 	-------, 				KC_VOLU, 	KC_UP, 	
+																	OSL(NUM), 	FI_MINS, 																	-------, 	KC_LEFT),
 
-	[CK22] = KEYMAP(
+	[CK2] = KEYMAP(
 		KC_D, 		KC_Q, 		KC_J, 		KC_U, 		KC_M, 		_______, 	_______, 		_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	
 		KC_E, 		KC_I, 		KC_F, 		KC_W, 		KC_L, 		_______, 	_______, 		_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	
 		KC_K, 		KC_R, 		KC_G, 		KC_U, 					_______, 	_______, 		_______, 	_______, 	_______, 	_______, 				_______, 	_______, 	
 																	_______, 	_______, 																	_______, 	_______),
 
 	[STELLARI] = KEYMAP(
-		KC_DEL, 	KC_T, 		KC_H, 		KC_G, 		KC_BSPC, 	OSM_SFT, 	KC_SPC, 		-------, 	-------, 	-------, 	-------, 	TO(0), 		KC_VOLD, 	KC_DOWN, 	
-		KC_Z, 		KC_X, 		KC_C, 		KC_V, 		KC_TAB, 	OSM_ALT, 	FI_PLUS, 		ATAB, 		KC_TAB, 	KC_ESC, 	KC_ENT, 	TG(12), 	-------, 	KC_RGHT, 	
-		KC_ESC, 	KC_Q, 		KC_B, 		KC_M, 					OSM_CTR, 	OSL(11), 		STEAM, 		-------, 	-------, 	-------, 				KC_VOLU, 	KC_UP, 	
-																	OSL(13), 	FI_MINS, 																	-------, 	KC_LEFT),
+		KC_DEL, 	KC_T, 		KC_H, 		KC_G, 		KC_BSPC, 	OSM_SFT, 	KC_SPC, 		-------, 	-------, 	-------, 	-------, 	TO(TXT), 	KC_VOLD, 	KC_DOWN, 	
+		KC_Z, 		KC_X, 		KC_C, 		KC_V, 		KC_TAB, 	OSM_ALT, 	FI_PLUS, 		ATAB, 		KC_TAB, 	KC_ESC, 	KC_ENT, 	TG(TXT2), 	-------, 	KC_RGHT, 	
+		KC_ESC, 	KC_Q, 		KC_B, 		KC_M, 					OSM_CTR, 	OSL(F), 		STEAM, 		-------, 	-------, 	-------, 				KC_VOLU, 	KC_UP, 	
+																	OSL(NUM), 	FI_MINS, 																	-------, 	KC_LEFT),
 
 	[XCOM] = KEYMAP(
-		KC_2, 		KC_F2, 		KC_F3, 		KC_K, 		LALT(KC_O), KC_S, 		KC_G, 			-------, 	-------, 	-------, 	KC_HOME, 	TO(0), 		KC_VOLD, 	KC_DOWN, 	
-		KC_ENT, 	KC_LSFT, 	KC_1, 		KC_TAB, 	KC_F1, 		KC_D, 		KC_E, 			ATAB, 		KC_TAB, 	KC_ESC, 	KC_ENT, 	TG(12), 	-------, 	KC_RGHT, 	
+		KC_2, 		KC_F2, 		KC_F3, 		KC_K, 		LALT(KC_O), KC_S, 		KC_G, 			-------, 	-------, 	-------, 	KC_HOME, 	TO(TXT), 	KC_VOLD, 	KC_DOWN, 	
+		KC_ENT, 	KC_LSFT, 	KC_1, 		KC_TAB, 	KC_F1, 		KC_D, 		KC_E, 			ATAB, 		KC_TAB, 	KC_ESC, 	KC_ENT, 	TG(TXT2), 	-------, 	KC_RGHT, 	
 		KC_R, 		KC_ESC, 	KC_X, 		KC_V, 					KC_W, 		KC_T, 			STEAM, 		-------, 	-------, 	-------, 				KC_VOLU, 	KC_UP, 	
 																	KC_A, 		KC_Q, 																		-------, 	KC_LEFT),
 
-	[SHOGUN2] = KEYMAP(
+	[SHOG] = KEYMAP(
 		_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	_______, 		_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	
 		_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	_______, 		_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	
 		_______, 	_______, 	_______, 	_______, 				_______, 	_______, 		_______, 	_______, 	_______, 	_______, 				_______, 	_______, 	
 																	_______, 	_______, 																	_______, 	_______),
 
-	[SHOGUN22] = KEYMAP(
+	[SHOG2] = KEYMAP(
 		_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	_______, 		_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	
 		_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	_______, 		_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	_______, 	
 		_______, 	_______, 	_______, 	_______, 				_______, 	_______, 		_______, 	_______, 	_______, 	_______, 				_______, 	_______, 	
@@ -63,27 +63,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 																	_______, 	_______, 																	_______, 	_______),
 
 	[MOUSE] = KEYMAP(
-		-------, 	-------, 	-------, 	-------, 	TO(0), 		KC_WH_D, 	-------, 		-------, 	-------, 	-------, 	-------, 	-------, 	-------, 	-------, 	
-		KC_MS_D, 	KC_MS_U, 	KC_MS_L, 	KC_MS_R, 	-------, 	KC_WH_R, 	-------, 		KC_ACL2, 	KC_ACL1, 	KC_ACL0, 	KC_BTN1, 	-------, 	-------, 	-------, 	
-		-------, 	-------, 	KC_BTN4, 	KC_BTN5, 				KC_WH_U, 	TG(13), 		-------, 	-------, 	KC_BTN3, 	KC_BTN2, 				TG(15), 	OSL(14), 	
+		-------, 	-------, 	-------, 	-------, 	TO(TXT), 	KC_WH_D, 	-------, 		-------, 	-------, 	-------, 	M(30), 		TO(TXT), 	-------, 	-------, 	
+		KC_MS_U, 	KC_MS_D, 	KC_MS_L, 	KC_MS_R, 	-------, 	KC_WH_R, 	-------, 		KC_ACL2, 	KC_ACL1, 	KC_ACL0, 	KC_BTN1, 	-------, 	-------, 	-------, 	
+		-------, 	-------, 	KC_BTN4, 	KC_BTN5, 				KC_WH_U, 	TG(NUM), 		-------, 	-------, 	KC_BTN3, 	KC_BTN2, 				TG(NAV), 	OSL(SYM), 	
 																	KC_WH_L, 	-------, 																	-------, 	-------),
 
 	[F] = KEYMAP(
-		KC_F11, 	KC_F7, 		KC_F8, 		KC_F9, 		_______, 	-------, 	-------, 		KC_PAUS, 	KC_INS, 	KC_SLCK, 	RESET, 		TO(0), 		KC_VOLD, 	KC_DOWN, 	
-		KC_F10, 	KC_F4, 		KC_F5, 		KC_F6, 		-------, 	-------, 	-------, 		TO(6), 		TO(5), 		TO(3), 		TO(1), 		TG(12), 	KC_MNXT, 	KC_RGHT, 	
+		KC_F11, 	KC_F7, 		KC_F8, 		KC_F9, 		_______, 	-------, 	-------, 		KC_PAUS, 	KC_INS, 	KC_SLCK, 	RESET, 		TO(TXT), 	KC_VOLD, 	KC_DOWN, 	
+		KC_F10, 	KC_F4, 		KC_F5, 		KC_F6, 		-------, 	-------, 	-------, 		TO(XCOM), 	TO(STELL), 	TO(CK), 	TO(WASD), 	TG(TXT2), 	KC_MNXT, 	KC_RGHT, 	
 		KC_F12, 	KC_F1, 		KC_F2, 		KC_F3, 					-------, 	-------, 		STEAM, 		KC_RSFT, 	RGB_MOD, 	RGB_TOG, 				KC_VOLU, 	KC_UP, 	
 																	-------, 	-------, 																	KC_MSTP, 	KC_LEFT),
 
 	[TXT2] = KEYMAP(
-		KC_C, 		KC_F, 		KC_H, 		KC_P, 		TO(11), 	OSM_SFT, 	KC_SPC, 		FI_O, 		KC_G, 		KC_V, 		KC_R, 		TG(12), 	KC_DEL, 	KC_BSPC, 	
+		KC_C, 		KC_F, 		KC_H, 		KC_P, 		TO(F),	 	OSM_SFT, 	KC_SPC, 		FI_O, 		KC_G, 		KC_V, 		KC_R, 		TG(TXT2), 	KC_DEL, 	KC_BSPC, 	
 		KC_L, 		KC_I, 		KC_S, 		KC_T, 		KC_Z, 		OSM_ALT, 	KC_TAB, 		KC_U, 		KC_A, 		KC_E, 		KC_N, 		KC_B, 		FI_A, 		KC_O, 	
-		KC_X, 		KC_W, 		KC_Y, 		KC_K, 					OSM_CTR, 	TG(13), 		KC_Q, 		KC_D, 		KC_J, 		KC_M, 					TG(15), 	OSL(14), 	
+		KC_X, 		KC_W, 		KC_Y, 		KC_K, 					OSM_CTR, 	TG(NUM), 		KC_Q, 		KC_D, 		KC_J, 		KC_M, 					TG(NAV), 	OSL(SYM), 	
 																	KC_LGUI, 	KC_ENT, 																	OSM_MEH, 	KC_COMM),
 		
 	[NUM] = KEYMAP(
 		KC_COMM, 	KC_7, 		KC_8, 		KC_9, 		-------, 	FI_PLUS, 	KC_SPC, 		KC_F11, 	KC_F9, 		KC_F8, 		KC_F7, 		-------, 	KC_T, 		KC_BSPC, 	
 		KC_0, 		KC_4, 		KC_5, 		KC_6, 		KC_DOT, 	FI_KERT, 	KC_TAB, 		KC_F10, 	KC_F6, 		KC_F5, 		KC_F4, 		-------, 	KC_N, 		KC_O, 	
-		OSM_CTR, 	KC_1, 		KC_2, 		KC_3, 					FI_MINS, 	_______, 		KC_F12, 	KC_F3, 		KC_F2, 		KC_F1, 					TG(15), 	OSL(14), 	
+		OSM_CTR, 	KC_1, 		KC_2, 		KC_3, 					FI_MINS, 	_______, 		KC_F12, 	KC_F3, 		KC_F2, 		KC_F1, 					TG(NAV), 	OSL(SYM), 	
 																	FI_JAKO, 	KC_ENT, 																	-------, 	-------),
 
 	[SYM] = KEYMAP(
@@ -254,6 +254,11 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 				return MACRO( D(LCTL), T(DOWN), D(LSFT), T(UP), U(LSFT), U(LCTL), T(DEL), END );
 			}
 			break;
+		case 30:
+			if (record->event.pressed) {
+				return MACRO( T(BTN1), T(BTN1), END );
+			}
+			break;
 	}
 	return MACRO_NONE;
 }
@@ -309,6 +314,8 @@ void matrix_scan_user(void) {
     old_layer = new_layer;
   }
 
+
+  
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

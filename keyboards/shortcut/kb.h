@@ -5,21 +5,21 @@
 
 #define _______ KC_TRNS
 #define ------- KC_NO
-#define TXT 0
-#define MOUSE 10
-#define F 11
-#define TXT2 12
-#define NUM 13
-#define SYM 14
-#define NAV 15
-#define WASD 1
-#define WASD2 2
-#define CK2 3
-#define CK2_2 4
-#define STELLARI 5
-#define XCOM 6
-#define SHOGUN2 7
-#define SHOGUN22 8
+#define TXT 0 // leader toggles, thumbs oneshot/momentary?
+#define MOUSE 10 // leader m
+#define TXT2 12 // 
+#define F 11 // 
+#define NUM 13 // leader n
+#define SYM 14 // 
+#define NAV 15 // leader t
+#define WASD 1 // leader g w / p w
+#define WASD2 2 // 
+#define CK 3 // leader g c / p c
+#define CK2 4 // 
+#define STELL 5 // leader g s / p s
+#define XCOM 6 // leader g x / p x
+#define SHOG 7 // leader g t / p t
+#define SHOG2 8 // 
 
 #define STEAM MEH(KC_O)
 #define OSM_SFT OSM(MOD_LSFT)
@@ -94,6 +94,7 @@
 
 #define ENDASH M(0) // 
 #define AALTO M(1) // ~(SPACE)
+#define PILKKU M(7) // ,(SPACE)
 
 
 #define KEYMAP( \
