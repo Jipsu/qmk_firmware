@@ -220,7 +220,7 @@ void matrix_init_user(void) {
 
 void matrix_scan_user(void) {
 
-  static uint8_t old_layer = 255;
+  static uint8_t old_layer = NULL;
   uint8_t new_layer = biton32(layer_state);
 
   if (old_layer != new_layer) {
