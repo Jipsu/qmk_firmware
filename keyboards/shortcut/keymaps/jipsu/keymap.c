@@ -279,19 +279,39 @@ void matrix_scan_user(void) {
     leading = false;
     leader_end();
 
-    SEQ_ONE_KEY(KC_F) {
-      register_code(KC_S);
-      unregister_code(KC_S);
+    SEQ_ONE_KEY(KC_X) {
+      register_code(KC_LCTR);
+      register_code(KC_X);
+      unregister_code(KC_X);
+      unregister_code(KC_LCTR);
     }
-    SEQ_TWO_KEYS(KC_A, KC_S) {
-      register_code(KC_H);
-      unregister_code(KC_H);
+    SEQ_ONE_KEY(KC_C) {
+      register_code(KC_LCTR);
+      register_code(KC_C);
+      unregister_code(KC_C);
+      unregister_code(KC_LCTR);
     }
-    SEQ_THREE_KEYS(KC_A, KC_S, KC_D) {
-      register_code(KC_LGUI);
-      register_code(KC_S);
-      unregister_code(KC_S);
-      unregister_code(KC_LGUI);
+    SEQ_ONE_KEY(KC_P) {
+      register_code(KC_LCTR);
+      register_code(KC_P);
+      unregister_code(KC_P);
+      unregister_code(KC_LCTR);
+    }
+    SEQ_ONE_KEY(KC_Z) {
+      register_code(KC_LCTR);
+      register_code(KC_Z);
+      unregister_code(KC_Z);
+      unregister_code(KC_LCTR);
+    }
+    SEQ_ONE_KEY(KC_Y) {
+      register_code(KC_LCTR);
+      register_code(KC_Y);
+      unregister_code(KC_Y);
+      unregister_code(KC_LCTR);
+    }	
+    SEQ_ONE_KEY(KC_T) {
+      register_code(KC_TAB);
+      unregister_code(KC_TAB);
     }
   }
   
