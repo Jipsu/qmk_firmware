@@ -5,23 +5,24 @@
 
 #define _______ KC_TRNS
 #define ------- KC_NO
-#define TXT 0 // leader toggles, thumbs oneshot/momentary?
-#define MOUSE 10 // leader m
-#define TXT2 12 // 
-#define F 11 // 
-#define NUM 13 // leader n
-#define SYM 14 // 
-#define NAV 15 // leader t
+#define TXT 0 // leaders not implemented!
 #define WASD 1 // leader g w / p w
 #define WASD2 2 // 
 #define CK 3 // leader g c / p c
 #define CK2 4 // 
-#define STELL 5 // leader g s / p s
+#define STEL 5 // leader g s / p s
 #define XCOM 6 // leader g x / p x
 #define SHOG 7 // leader g t / p t
 #define SHOG2 8 // 
+#define TXT2 9 // copy of txt for TG game access
+#define NUM 10 // leader n
+#define ALTNUM 11 // experimental num
+#define MOUSE 12 // leader m
+#define SYM 13 // symbols
+#define NAV 14 // navigation and text manipulation, leader t
+#define MDLOB 15 // markdown, accents, lobby to game layouts
+#define FENT 16 // F-keys, enter, tab, math operators 
 
-#define STEAM MEH(KC_O)
 #define OSM_SFT OSM(MOD_LSFT)
 #define OSM_ALT OSM(MOD_LALT)
 #define OSM_CTR OSM(MOD_LCTL)
@@ -30,6 +31,7 @@
 #define OSM_CS OSM(MOD_LCTL | MOD_LSFT)
 #define ATAB LALT(KC_TAB)
 #define STAB LSFT(KC_TAB)
+#define STEAM MEH(KC_O) // steam overlay
 
 #define FI_O KC_SCLN  // ö
 #define FI_A KC_QUOT  // ä
@@ -37,8 +39,8 @@
 #define FI_KYSY LSFT(KC_MINS) // ?
 #define FI_HUUT LSFT(KC_1) // !
 #define FI_PLUS KC_MINS // +
-#define FI_MINS KC_SLSH // -
-#define FI_KERT LSFT(KC_NUHS) // *
+#define FI_MIINUS KC_SLSH // -
+#define FI_KERTO LSFT(KC_NUHS) // *
 #define FI_JAKO LSFT(KC_7) // /
 #define FI_ISOM LSFT(KC_NUBS) // >
 #define FI_PIEN KC_NUBS // <
@@ -70,31 +72,40 @@
 #define FI_LAKI KC_GRV // §
 #define FI_ACUTE KC_EQL // ´
 #define FI_GRAVE LSFT(KC_EQL)) // `
-#define  // 
-#define DOC_END LCTL(KC_END) // 
-#define DOC_HOME LCTL(KC_HOME) // 
-#define PARA_UP LCTL(KC_UP) // 
-#define PARA_DN LCTL(KC_DOWN) // 
-#define WRD_LEFT LCTL(KC_LEFT) // 
-#define WRD_RGHT LCTL(KC_RGHT) // 
-#define CUTLINE M(28) // 
-#define CUTLINEE M(27) // 
-#define CUTLINEH M(26) // 
+
+#define DOC_END LCTL(KC_END) // siirry loppuun
+#define DOC_HOME LCTL(KC_HOME) // siirry alkuun
+#define PARA_UP LCTL(KC_UP) // siirry kappale ylös
+#define PARA_DN LCTL(KC_DOWN) // siirry kappale alas
+#define WRD_LEFT LCTL(KC_LEFT) // siirry sana vasemmalle
+#define WRD_RGHT LCTL(KC_RGHT) // siirry sana oikealle
+#define CUTLINE M(12) // leikkaa rivi
+#define CUTLINEE M(17) // leikkaa rivin loppu
+#define CUTLINEH M(16) // leikkaa rivin alku
 #define CUT LCTL(KC_X) // 
 #define COPY LCTL(KC_C) // 
 #define PASTE LCTL(KC_V) // 
 #define UNDO LCTL(KC_Z) // 
 #define REDO LCTL(KC_Y) // 
-#define CUTPARA M(29) // 
-#define DELWRD_O M(25) // 
-#define DELWRD_V M(24) // 
-#define MD_COMM M(23) // 
-#define MD_VIITA M(2) // 
-#define MD_VIITL M(3) // 
+#define CUTPARA M(18) // leikkaa kappale
+#define DELWRD_O M(15) // poista sana oikealla
+#define DELWRD_V M(14) // poista sana vasemmalla
+#define MD_COMM M(13) // markdown kommentti
+#define MD_VIITA M(2) // markdown alaviite
+#define MD_VIITL M(3) // markdown loppuviite
 
-#define ENDASH M(0) // 
+#define ENDASH M(0) // ajatusviiva
 #define AALTO M(1) // ~(SPACE)
-#define PILKKU M(7) // ,(SPACE)
+#define PILKKU M(4) // ,(SPACE)
+#define NUM00 M(5) // 00
+#define NUM000 M(6) // 000
+#define NUM0_0 M(7) // 0,0
+#define NUM0_00 M(8) // 0,00
+#define P0_001 M(9) // p<0,001
+#define P0_01 M(10) // p<0,01
+#define P0_05 M(11) // p<0,05
+
+#define OSLPOIS M(19) // type space backspace to crudely cancel osl
 
 
 #define KEYMAP( \
