@@ -6,7 +6,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			KC_C, 		KC_F, 		KC_H, 		KC_P, 		KC_Q, 		OSM_SFT, 	KC_SPC, 			FI_A, 		KC_G, 		KC_V, 		KC_R, 		KC_LGUI, 	OSL(NAV), 	KC_BSPC, 	
 			KC_L, 		KC_I, 		KC_S, 		KC_T, 		KC_Z, 		OSM_ALT, 	KC_DOT, 			KC_U, 		KC_A, 		KC_E, 		KC_N, 		KC_B, 		TG(MOUSE), 	KC_O, 	
 		KC_X, 			KC_W, 		KC_Y, 		KC_K, 					OSM_CTL, 	OSL(NUM), 		FI_O, 			KC_D, 		KC_J, 		KC_M, 					OSL(MDLOB), OSL(SYM), 	
-																		KC_LEAD, 	OSL(FENT), 																		OSM_MEH, 	PILKKU),
+																		XXXXXXX, 	OSL(FENT), 																		OSM_MEH, 	PILKKU),
 
 	[WASD] = KEYMAP(
 			KC_V, 		KC_4, 		KC_3, 		KC_2, 		KC_N, 		KC_LSFT, 	KC_1, 				KC_VOLD, 	KC_VOLU, 	ATAB, 		KC_ESC, 	TO(TXT), 	KC_DOWN, 	KC_DEL, 	
@@ -103,49 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void matrix_init_user(void) {
 }
 
-LEADER_EXTERNS();
-
 void matrix_scan_user(void) {
-	
- LEADER_DICTIONARY() {
-    leading = false;
-    leader_end();
-
-    SEQ_ONE_KEY(KC_X) {
-      register_code(KC_LCTL);
-      register_code(KC_X);
-      unregister_code(KC_X);
-      unregister_code(KC_LCTL);
-    }
-    SEQ_ONE_KEY(KC_C) {
-      register_code(KC_LCTL);
-      register_code(KC_C);
-      unregister_code(KC_C);
-      unregister_code(KC_LCTL);
-    }
-    SEQ_ONE_KEY(KC_P) {
-      register_code(KC_LCTL);
-      register_code(KC_P);
-      unregister_code(KC_P);
-      unregister_code(KC_LCTL);
-    }
-    SEQ_ONE_KEY(KC_Z) {
-      register_code(KC_LCTL);
-      register_code(KC_Z);
-      unregister_code(KC_Z);
-      unregister_code(KC_LCTL);
-    }
-    SEQ_ONE_KEY(KC_Y) {
-      register_code(KC_LCTL);
-      register_code(KC_Y);
-      unregister_code(KC_Y);
-      unregister_code(KC_LCTL);
-    }	
-    SEQ_ONE_KEY(KC_T) {
-      register_code(KC_TAB);
-      unregister_code(KC_TAB);
-    }
-  }
 
   static uint8_t old_layer = 255;
   uint8_t new_layer = biton32(layer_state);
@@ -185,16 +143,16 @@ void matrix_scan_user(void) {
       case 10:
         rgblight_setrgb(0x00, 0x05, 0x00);
         break;
-      case 13:
+      case 12:
         rgblight_setrgb(0x03, 0x03, 0x02);
         break;
-      case 14:
+      case 13:
         rgblight_setrgb(0x03, 0x02, 0x02);
         break;
-      case 15:
+      case 14:
         rgblight_setrgb(0x33, 0x00, 0x33);
         break;
-      case 16:
+      case 15:
         rgblight_setrgb(0x03, 0x03, 0x02);
         break;
     }
