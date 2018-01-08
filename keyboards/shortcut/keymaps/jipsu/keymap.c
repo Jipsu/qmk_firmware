@@ -190,7 +190,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 				reset_oneshot_layer();
                 return false; break;
             case MD_COMM:
-                SEND_STRING(SS_DOWN(X_RALT)"8"SS_UP(X_RALT)"COMMENT"SS_DOWN(X_RALT)"9"SS_UP(X_RALT)SS_TAP(X_SCOLON)" # "); // KOMMENTTI
 				reset_oneshot_layer();
                 return false; break;
             case NUM00:
