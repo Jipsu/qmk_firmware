@@ -4,7 +4,7 @@
 #include "quantum.h"
 
 #define _______ KC_TRNS
-#define ------- KC_NO
+#define XXXXXXX KC_NO
 #define TXT 0 // leaders not implemented!
 #define WASD 1 // leader g w / p w
 #define WASD2 2 // 
@@ -25,7 +25,7 @@
 
 #define OSM_SFT OSM(MOD_LSFT)
 #define OSM_ALT OSM(MOD_LALT)
-#define OSM_CTR OSM(MOD_LCTL)
+#define OSM_CTL OSM(MOD_LCTL)
 #define OSM_MEH OSM(MOD_MEH)
 #define OSM_SUP OSM(MOD_SUPER)
 #define OSM_CS OSM(MOD_LCTL | MOD_LSFT)
@@ -46,7 +46,7 @@
 #define FI_PIEN KC_NUBS // <
 #define FI_PIPE RALT(KC_NUBS) // |
 #define FI_YHTK LSFT(KC_0) // =
-#define FI_KENO RALT(KC_MINS) // \ 
+#define FI_KENO RALT(KC_MINS) // kenoviiva
 #define FI_SULKUV LSFT(KC_8) // (
 #define FI_SULKUO LSFT(KC_9) // )
 #define FI_HAKASV RALT(KC_8) // [
@@ -71,7 +71,7 @@
 #define FI_TILDE RALT(KC_RBRC) // ~
 #define FI_LAKI KC_GRV // §
 #define FI_ACUTE KC_EQL // ´
-#define FI_GRAVE LSFT(KC_EQL)) // `
+#define FI_GRAVE LSFT(KC_EQL) // `
 
 #define DOC_END LCTL(KC_END) // siirry loppuun
 #define DOC_HOME LCTL(KC_HOME) // siirry alkuun
@@ -79,34 +79,34 @@
 #define PARA_DN LCTL(KC_DOWN) // siirry kappale alas
 #define WRD_LEFT LCTL(KC_LEFT) // siirry sana vasemmalle
 #define WRD_RGHT LCTL(KC_RGHT) // siirry sana oikealle
-#define CUTLINE M(12) // leikkaa rivi
-#define CUTLINEE M(17) // leikkaa rivin loppu
-#define CUTLINEH M(16) // leikkaa rivin alku
 #define CUT LCTL(KC_X) // 
 #define COPY LCTL(KC_C) // 
 #define PASTE LCTL(KC_V) // 
 #define UNDO LCTL(KC_Z) // 
 #define REDO LCTL(KC_Y) // 
-#define CUTPARA M(18) // leikkaa kappale
-#define DELWRD_O M(15) // poista sana oikealla
-#define DELWRD_V M(14) // poista sana vasemmalla
-#define MD_COMM M(13) // markdown kommentti
-#define MD_VIITA M(2) // markdown alaviite
-#define MD_VIITL M(3) // markdown loppuviite
 
-#define ENDASH M(0) // ajatusviiva
-#define AALTO M(1) // ~(SPACE)
-#define PILKKU M(4) // ,(SPACE)
-#define NUM00 M(5) // 00
-#define NUM000 M(6) // 000
-#define NUM0_0 M(7) // 0,0
-#define NUM0_00 M(8) // 0,00
-#define P0_001 M(9) // p<0,001
-#define P0_01 M(10) // p<0,01
-#define P0_05 M(11) // p<0,05
-
-#define OSLPOIS M(19) // type space backspace to crudely cancel osl
-
+enum custom_keycodes {
+    ENDASH = SAFE_RANGE,
+    AALTO,
+	PILKKU,
+	OSLPOIS,
+	MD_VIITA,
+	MD_VIITL,
+	MD_COMM,
+	NUM00,
+	NUM000,
+	NUM0_0,
+	NUM0_00,
+	P0_001,
+	P0_01,
+	P0_05,
+	CUTLINE,
+	CUTLINEH,
+	CUTLINEE,
+	CUTPARA,
+	CUTWRD_V,
+	CUTWRD_O
+};
 
 #define KEYMAP( \
 	K000, K001, K002, K003, K004, K005, K006, K007, K008, K009, K010, K011, K012, K013, \
