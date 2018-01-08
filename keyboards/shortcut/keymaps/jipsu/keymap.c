@@ -168,63 +168,82 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         switch(keycode) {
             case ENDASH:
                 SEND_STRING(SS_DOWN(X_LALT)SS_TAP(X_KP_0)SS_TAP(X_KP_1)SS_TAP(X_KP_5)SS_TAP(X_KP_0)SS_UP(X_LALT)); // ENDASH
+				reset_oneshot_layer();
                 return false; break;
             case AALTO:
                 SEND_STRING(SS_DOWN(X_RALT)SS_TAP(X_RBRACKET)SS_UP(X_RALT)SS_TAP(X_SPACE)); // AALTO
+				reset_oneshot_layer();
                 return false; break;
             case PILKKU:
                 SEND_STRING(", "); // COMMA WITH SPACE
+				reset_oneshot_layer();
                 return false; break;
             case OSLPOIS:
-                SEND_STRING(SS_TAP(X_SPACE)SS_TAP(X_BSPACE)); // CRUDE OSL REMOVAL
+				reset_oneshot_layer(); // OSL REMOVAL
                 return false; break;
             case MD_VIITA:
                 SEND_STRING(SS_DOWN(X_RALT)"8"SS_UP(X_RALT)SS_DOWN(X_LSHIFT)SS_DOWN(X_RALT)"8"SS_UP(X_RALT)SS_UP(X_LSHIFT)SS_TAP(X_SPACE)SS_DOWN(X_RALT)"9"SS_UP(X_RALT)SS_TAP(X_LEFT)); // ALAVIITE
+				reset_oneshot_layer();
                 return false; break;
             case MD_VIITL:
                 SEND_STRING(SS_DOWN(X_RALT)"829"SS_UP(X_RALT)SS_TAP(X_LEFT)); // LOPPUVIITE
+				reset_oneshot_layer();
                 return false; break;
             case MD_COMM:
                 SEND_STRING(SS_DOWN(X_RALT)"8"SS_UP(X_RALT)"COMMENT"SS_DOWN(X_RALT)"9"SS_UP(X_RALT)SS_TAP(X_SCOLON)" # "); // KOMMENTTI
+				reset_oneshot_layer();
                 return false; break;
             case NUM00:
                 SEND_STRING("00"); // 
+				reset_oneshot_layer();
                 return false; break;
             case NUM000:
                 SEND_STRING("000"); // 
+				reset_oneshot_layer();
                 return false; break;
             case NUM0_0:
                 SEND_STRING("0,0"); // 
+				reset_oneshot_layer();
                 return false; break;
             case NUM0_00:
                 SEND_STRING("0,00"); // 
+				reset_oneshot_layer();
                 return false; break;
             case P0_001:
                 SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,001"); // 
+				reset_oneshot_layer();
                 return false; break;
             case P0_01:
                 SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,01"); // 
+				reset_oneshot_layer();
                 return false; break;
             case P0_05:
                 SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,05"); // 
+				reset_oneshot_layer();
                 return false; break;
             case CUTLINE:
                 SEND_STRING(SS_TAP(X_END)SS_DOWN(X_LSHIFT)SS_TAP(X_HOME)SS_UP(X_LSHIFT)SS_LCTRL("x")); // 
+				reset_oneshot_layer();
                 return false; break;
             case CUTLINEH:
                 SEND_STRING(SS_DOWN(X_LSHIFT)SS_TAP(X_HOME)SS_UP(X_LSHIFT)SS_LCTRL("x")); // CUT LINE FROM CURSOR TO HOME
+				reset_oneshot_layer();
                 return false; break;
             case CUTLINEE:
                 SEND_STRING(SS_DOWN(X_LSHIFT)SS_TAP(X_END)SS_UP(X_LSHIFT)SS_LCTRL("x")); // CUT LINE FROM CURSOR TO END
+				reset_oneshot_layer();
                 return false; break;
             case CUTPARA:
                 SEND_STRING(SS_DOWN(X_LCTRL)SS_TAP(X_DOWN)SS_DOWN(X_LSHIFT)SS_TAP(X_UP)SS_UP(X_LSHIFT)"x"SS_UP(X_LCTRL)); // GO TO END OF PARAGRAPH, SELECT AND CUT
+				reset_oneshot_layer();
                 return false; break;
             case CUTWRD_V:
                 SEND_STRING(SS_DOWN(X_LCTRL)SS_DOWN(X_LSHIFT)SS_TAP(X_LEFT)SS_UP(X_LSHIFT)"x"SS_UP(X_LCTRL)); // SELECT WORD ON THE LEFT AND CUT
+				reset_oneshot_layer();
                 return false; break;
             case CUTWRD_O:
                 SEND_STRING(SS_DOWN(X_LCTRL)SS_DOWN(X_LSHIFT)SS_TAP(X_RIGHT)SS_UP(X_LSHIFT)"x"SS_UP(X_LCTRL)); // SELECT WORD ON THE RIGHT AND CUT
+				reset_oneshot_layer();
                 return false; break;
         }
     }
