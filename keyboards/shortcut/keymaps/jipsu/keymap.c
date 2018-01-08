@@ -64,15 +64,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[NUM] = KEYMAP(
 			KC_DOT, 	KC_7, 		KC_8, 		KC_9, 		XXXXXXX, 	_______, 	_______, 			KC_DOT, 	KC_9, 		KC_8, 		KC_7, 		TO(TXT), 	_______, 	_______, 	
-			KC_0, 		KC_4, 		KC_5, 		KC_6, 		TG(ALTNUM), _______, 	_______, 			KC_0, 		KC_6, 		KC_5, 		KC_4, 		TG(NUM), 	_______, 	_______, 	
+			KC_0, 		KC_4, 		KC_5, 		KC_6, 		XXXXXXX, 	_______, 	_______, 			KC_0, 		KC_6, 		KC_5, 		KC_4, 		TG(NUM), 	_______, 	_______, 	
 		OSM_CTL, 		KC_1, 		KC_2, 		KC_3, 					_______, 	OSLPOIS, 		XXXXXXX, 		KC_3, 		KC_2, 		KC_1, 					_______, 	_______, 	
 																		_______, 	_______, 																		_______, 	KC_COMM),
-																		
-	[ALTNUM] = KEYMAP(
-			KC_DOT, 	FI_AALTOSV, FI_HAKASV, 	FI_SULKUV, 	XXXXXXX, 	_______, 	_______,			KC_DOT, 	FI_AALTOSO, FI_HAKASO, 	FI_SULKUO, 	TO(TXT), 	_______, 	_______, 	
-			KC_6, 		KC_4, 		KC_2, 		KC_0, 		_______, 	_______, 	_______,			KC_7, 		KC_5, 		KC_3, 		KC_1, 		XXXXXXX, 	_______, 	_______, 	
-		XXXXXXX, 		NUM000, 	NUM00, 		KC_8, 					_______, 	XXXXXXX, 		XXXXXXX, 		NUM0_0, 	NUM0_00, 	KC_9, 					_______, 	_______, 	
-																		_______, 	_______,																		_______, 	KC_COMM),
 																		
 	[MOUSE] = KEYMAP(
 			XXXXXXX, 	XXXXXXX, 	XXXXXXX, 	XXXXXXX, 	XXXXXXX, 	_______, 	KC_WH_D, 			XXXXXXX, 	XXXXXXX, 	XXXXXXX, 	XXXXXXX, 	TO(TXT), 	_______, 	XXXXXXX, 	
@@ -153,7 +147,7 @@ void matrix_scan_user(void) {
     }
   }
 
-  static uint8_t old_layer = NULL;
+  static uint8_t old_layer = 255;
   uint8_t new_layer = biton32(layer_state);
 
   if (old_layer != new_layer) {
@@ -227,13 +221,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING(SS_TAP(X_SPACE)SS_TAP(X_BSPACE)); // CRUDE OSL REMOVAL
                 return false; break;
             case MD_VIITA:
-                SEND_STRING(SS_DOWN(X_RALT)"8"SS_UP(X_RALT)SS_DOWN(X_LSHIFT)SS_TAP(X_RBRACKET)SS_UP(X_LSHIFT)SS_TAP(X_SPACE)SS_DOWN(X_RALT)"9"SS_UP(X_RALT)SS_TAP(X_LEFT)); // ALAVIITE
+                SEND_STRING(SS_DOWN(X_RALT)"8"SS_UP(X_RALT)SS_DOWN(X_LSHIFT)SS_DOWN(X_RALT)"8"SS_UP(X_RALT)SS_UP(X_LSHIFT)SS_TAP(X_SPACE)SS_DOWN(X_RALT)"9"SS_UP(X_RALT)SS_TAP(X_LEFT)); // ALAVIITE
                 return false; break;
             case MD_VIITL:
                 SEND_STRING(SS_DOWN(X_RALT)"829"SS_UP(X_RALT)SS_TAP(X_LEFT)); // LOPPUVIITE
                 return false; break;
             case MD_COMM:
-                SEND_STRING("COMMENT: # "); // KOMMENTTI
+                SEND_STRING(SS_DOWN(X_RALT)"8"SS_UP(X_RALT)"COMMENT"SS_DOWN(X_RALT)"9"SS_UP(X_RALT)SS_TAP(X_SCOLON)" # "); // KOMMENTTI
                 return false; break;
             case NUM00:
                 SEND_STRING("00"); // 
@@ -248,13 +242,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("0,00"); // 
                 return false; break;
             case P0_001:
-                SEND_STRING("p<0,001"); // 
+                SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,001"); // 
                 return false; break;
             case P0_01:
-                SEND_STRING("p<0,01"); // 
+                SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,01"); // 
                 return false; break;
             case P0_05:
-                SEND_STRING("p<0,05"); // 
+                SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,05"); // 
                 return false; break;
             case CUTLINE:
                 SEND_STRING(SS_TAP(X_END)SS_DOWN(X_LSHIFT)SS_TAP(X_HOME)SS_UP(X_LSHIFT)SS_LCTRL("x")); // 

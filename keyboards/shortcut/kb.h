@@ -16,12 +16,11 @@
 #define SHOG2 8 // 
 #define TXT2 9 // copy of txt for TG game access
 #define NUM 10 // leader n
-#define ALTNUM 11 // experimental num
-#define MOUSE 12 // leader m
-#define SYM 13 // symbols
-#define NAV 14 // navigation and text manipulation, leader t
-#define MDLOB 15 // markdown, accents, lobby to game layouts
-#define FENT 16 // F-keys, enter, tab, math operators 
+#define MOUSE 11 // leader m
+#define SYM 12 // symbols
+#define NAV 13 // navigation and text manipulation, leader t
+#define MDLOB 14 // markdown, accents, lobby to game layouts
+#define FENT 15 // F-keys, enter, tab, math operators 
 
 #define OSM_SFT OSM(MOD_LSFT)
 #define OSM_ALT OSM(MOD_LALT)
