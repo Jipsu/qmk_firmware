@@ -6,7 +6,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			KC_C, 		KC_F, 		KC_H, 		KC_P, 		KC_Q, 		OSM_SFT, 	KC_SPC, 			FI_A, 		KC_G, 		KC_V, 		KC_R, 		KC_LGUI, 	OSL(NAV), 	KC_BSPC, 	
 			KC_L, 		KC_I, 		KC_S, 		KC_T, 		KC_Z, 		OSM_ALT, 	KC_DOT, 			KC_U, 		KC_A, 		KC_E, 		KC_N, 		KC_B, 		TG(MOUSE), 	KC_O, 	
 		KC_X, 			KC_W, 		KC_Y, 		KC_K, 					OSM_CTL, 	OSL(NUM), 		FI_O, 			KC_D, 		KC_J, 		KC_M, 					OSL(MDLOB), OSL(SYM), 	
-																		XXXXXXX, 	OSL(FENT), 																		OSM_MEH, 	PILKKU),
+																		KC_LEAD, 	OSL(FENT), 																		OSM_MEH, 	PILKKU),
 
 	[WASD] = KEYMAP(
 			KC_V, 		KC_4, 		KC_3, 		KC_2, 		KC_N, 		KC_LSFT, 	KC_1, 				KC_VOLD, 	KC_VOLU, 	ATAB, 		KC_ESC, 	TO(TXT), 	KC_DOWN, 	KC_DEL, 	
@@ -100,7 +100,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	
 };
 
+LEADER_EXTERNS();
+
 void matrix_init_user(void) {
+
 }
 
 void matrix_scan_user(void) {
@@ -110,145 +113,168 @@ void matrix_scan_user(void) {
 
   if (old_layer != new_layer) {
     switch (new_layer) {
-      case 0:
-        rgblight_setrgb(0x00, 0x00, 0x00);
+      case TXT:
+        rgb_at_black;
         break;
-      case 1:
-        rgblight_setrgb(0x05, 0x00, 0x00);
+      case WASD:
+        rgb_at_red_dark;
         break;
-      case 2:
-        rgblight_setrgb(0x1a, 0x00, 0x00);
+      case WASD2:
+        rgb_at_red;
         break;
-      case 3:
-        rgblight_setrgb(0x00, 0x03, 0x05);
+      case CK:
+        rgb_at_cyan_dark;
         break;
-      case 4:
-        rgblight_setrgb(0x00, 0x0d, 0x1a);
+      case CK2:
+        rgb_at_cyan;
         break;
-      case 5:
-        rgblight_setrgb(0x05, 0x05, 0x00);
+      case XCOM:
+        rgb_at_yellow_dark;
         break;
-      case 6:
-        rgblight_setrgb(0x00, 0x05, 0x05);
+      case SHOG:
+        rgb_at_orange_dark;
         break;
-      case 7:
-        rgblight_setrgb(0x00, 0x05, 0x05);
+      case SHOG2:
+        rgb_at_orange;
         break;
-      case 8:
-        rgblight_setrgb(0x00, 0x05, 0x05);
+      case TXT2:
+        rgb_at_gray_dark;
         break;
-      case 9:
-        rgblight_setrgb(0x03, 0x03, 0x03);
+      case NUM:
+        rgb_at_green_dark;
         break;
-      case 10:
-        rgblight_setrgb(0x00, 0x05, 0x00);
+      case MOUSE:
+        rgb_at_gray;
         break;
-      case 12:
-        rgblight_setrgb(0x03, 0x03, 0x02);
+      case SYM:
+        rgb_at_blue_dark;
         break;
-      case 13:
-        rgblight_setrgb(0x03, 0x02, 0x02);
+      case NAV:
+        rgb_at_red_dark;
         break;
-      case 14:
-        rgblight_setrgb(0x33, 0x00, 0x33);
+      case MDLOB:
+        rgb_at_yellow;
         break;
-      case 15:
-        rgblight_setrgb(0x03, 0x03, 0x02);
+      case FENT:
+        rgb_at_purple;
         break;
     }
 
     old_layer = new_layer;
   }
 
- 
+// Leader keys
+	
+ LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    SEQ_ONE_KEY(KC_X) {
+      register_code(KC_LCTL);
+      register_code(KC_X);
+      unregister_code(KC_X);
+      unregister_code(KC_LCTL);
+    }
+    SEQ_ONE_KEY(KC_C) {
+      register_code(KC_LCTL);
+      register_code(KC_C);
+      unregister_code(KC_C);
+      unregister_code(KC_LCTL);
+    }
+    SEQ_ONE_KEY(KC_P) {
+      register_code(KC_LCTL);
+      register_code(KC_P);
+      unregister_code(KC_P);
+      unregister_code(KC_LCTL);
+    }
+    SEQ_ONE_KEY(KC_Z) {
+      register_code(KC_LCTL);
+      register_code(KC_Z);
+      unregister_code(KC_Z);
+      unregister_code(KC_LCTL);
+    }
+    SEQ_ONE_KEY(KC_Y) {
+      register_code(KC_LCTL);
+      register_code(KC_Y);
+      unregister_code(KC_Y);
+      unregister_code(KC_LCTL);
+    }	
+    SEQ_ONE_KEY(KC_T) {
+      register_code(KC_TAB);
+      unregister_code(KC_TAB);
+    }
+  }
+  
 }
+
+// Macros with oneshot layer cancel that requires you to specify which layer is cancelled. Look into reset_oneshot_layer() when have time.
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         switch(keycode) {
             case ENDASH:
                 SEND_STRING(SS_DOWN(X_LALT)SS_TAP(X_KP_0)SS_TAP(X_KP_1)SS_TAP(X_KP_5)SS_TAP(X_KP_0)SS_UP(X_LALT)); // ENDASH
-				reset_oneshot_layer();
-                return false; break;
+                layer_off (SYM); return false; break;
             case AALTO:
                 SEND_STRING(SS_DOWN(X_RALT)SS_TAP(X_RBRACKET)SS_UP(X_RALT)SS_TAP(X_SPACE)); // AALTO
-				reset_oneshot_layer();
-                return false; break;
+                layer_off (SYM); return false; break;
             case PILKKU:
                 SEND_STRING(", "); // COMMA WITH SPACE
-				reset_oneshot_layer();
                 return false; break;
-            case OSLPOIS:
-				reset_oneshot_layer(); // OSL REMOVAL
-                return false; break;
+            case OSLPOIS: // OSL REMOVAL AT DIFFERENT LAYERS
+                if (layer_state & (1UL<<NUM)) {
+				  layer_off (NUM);}
+                if (layer_state & (1UL<<SYM)) {
+				  layer_off (SYM);}
+                if (layer_state & (1UL<<MDLOB)) {
+				  layer_off (MDLOB);}
+                if (layer_state & (1UL<<NAV)) {
+				  layer_off (NAV);}
+                if (layer_state & (1UL<<FENT)) {
+                  layer_off (FENT);}
+				return false; break; 
             case MD_VIITA:
                 SEND_STRING(SS_DOWN(X_RALT)"8"SS_UP(X_RALT)SS_DOWN(X_LSHIFT)SS_DOWN(X_RALT)"8"SS_UP(X_RALT)SS_UP(X_LSHIFT)SS_TAP(X_SPACE)SS_DOWN(X_RALT)"9"SS_UP(X_RALT)SS_TAP(X_LEFT)); // ALAVIITE
-				reset_oneshot_layer();
-                return false; break;
+                layer_off (MDLOB); return false; break;
             case MD_VIITL:
                 SEND_STRING(SS_DOWN(X_RALT)"829"SS_UP(X_RALT)SS_TAP(X_LEFT)); // LOPPUVIITE
-				reset_oneshot_layer();
-                return false; break;
+                layer_off (MDLOB); return false; break;
             case MD_COMM:
                 SEND_STRING(SS_DOWN(X_RALT)"8"SS_UP(X_RALT)"COMMENT"SS_DOWN(X_RALT)"9"SS_UP(X_RALT)SS_LSFT(". 3 ")); // KOMMENTTI
-				reset_oneshot_layer();
-                return false; break;
-            case NUM00:
-                SEND_STRING("00"); // 
-				reset_oneshot_layer();
-                return false; break;
-            case NUM000:
-                SEND_STRING("000"); // 
-				reset_oneshot_layer();
-                return false; break;
-            case NUM0_0:
-                SEND_STRING("0,0"); // 
-				reset_oneshot_layer();
-                return false; break;
-            case NUM0_00:
-                SEND_STRING("0,00"); // 
-				reset_oneshot_layer();
-                return false; break;
+                layer_off (MDLOB); return false; break;
             case P0_001:
-                SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,001"); // 
-				reset_oneshot_layer();
-                return false; break;
+                SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,001"); // p<0.001
+                layer_off (MDLOB); return false; break;
             case P0_01:
-                SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,01"); // 
-				reset_oneshot_layer();
-                return false; break;
+                SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,01"); // p<0.01
+                layer_off (MDLOB); return false; break;
             case P0_05:
-                SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,05"); // 
-				reset_oneshot_layer();
-                return false; break;
+                SEND_STRING("p"SS_TAP(X_NONUS_BSLASH)"0,05"); // p<0.05
+                layer_off (MDLOB); return false; break;
             case CUTLINE:
-                SEND_STRING(SS_TAP(X_END)SS_DOWN(X_LSHIFT)SS_TAP(X_HOME)SS_UP(X_LSHIFT)SS_LCTRL("x")); // 
-				reset_oneshot_layer();
-                return false; break;
+                SEND_STRING(SS_TAP(X_END)SS_DOWN(X_LSHIFT)SS_TAP(X_HOME)SS_UP(X_LSHIFT)SS_LCTRL("x")); // CUT LINE
+                layer_off (NAV); return false; break;
             case CUTLINEH:
                 SEND_STRING(SS_DOWN(X_LSHIFT)SS_TAP(X_HOME)SS_UP(X_LSHIFT)SS_LCTRL("x")); // CUT LINE FROM CURSOR TO HOME
-				reset_oneshot_layer();
-                return false; break;
+                layer_off (NAV); return false; break;
             case CUTLINEE:
                 SEND_STRING(SS_DOWN(X_LSHIFT)SS_TAP(X_END)SS_UP(X_LSHIFT)SS_LCTRL("x")); // CUT LINE FROM CURSOR TO END
-				reset_oneshot_layer();
-                return false; break;
+                layer_off (NAV); return false; break;
             case CUTPARA:
                 SEND_STRING(SS_DOWN(X_LCTRL)SS_TAP(X_DOWN)SS_DOWN(X_LSHIFT)SS_TAP(X_UP)SS_UP(X_LSHIFT)"x"SS_UP(X_LCTRL)); // GO TO END OF PARAGRAPH, SELECT AND CUT
-				reset_oneshot_layer();
-                return false; break;
+                layer_off (NAV); return false; break;
             case CUTWRD_V:
-                SEND_STRING(SS_DOWN(X_LCTRL)SS_DOWN(X_LSHIFT)SS_TAP(X_LEFT)SS_UP(X_LSHIFT)"x"SS_UP(X_LCTRL)); // SELECT WORD ON THE LEFT AND CUT
-				reset_oneshot_layer();
-                return false; break;
+                SEND_STRING(SS_DOWN(X_LCTRL)SS_DOWN(X_LSHIFT)SS_TAP(X_LEFT)SS_UP(X_LSHIFT)"x"SS_UP(X_LCTRL)); // SELECT WORD ON THE LEFT AND CUT, broken?
+                layer_off (NAV); return false; break;
             case CUTWRD_O:
-                SEND_STRING(SS_DOWN(X_LCTRL)SS_DOWN(X_LSHIFT)SS_TAP(X_RIGHT)SS_UP(X_LSHIFT)"x"SS_UP(X_LCTRL)); // SELECT WORD ON THE RIGHT AND CUT
-				reset_oneshot_layer();
-                return false; break;
+                SEND_STRING(SS_DOWN(X_LCTRL)SS_DOWN(X_LSHIFT)SS_TAP(X_RIGHT)SS_UP(X_LSHIFT)"x"SS_UP(X_LCTRL)); // SELECT WORD ON THE RIGHT AND CUT, broken?
+                layer_off (NAV); return false; return false; break;
         }
     }
     return true;
-};
+}; 
+
+// Something something.
 
 void led_set_user(uint8_t usb_led) {
 

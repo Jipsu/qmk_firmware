@@ -48,12 +48,12 @@
 
 #define RGB_DI_PIN D6
 #ifdef RGB_DI_PIN
-/*#define RGBLIGHT_ANIMATIONS */
-#define RGBLED_NUM 1
+#define RGBLIGHT_ANIMATIONS
+#define RGBLED_NUM 16
 #define RGBLIGHT_HUE_STEP 8
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
-#define RGBLIGHT_LIMIT_VAL 20
+#define RGBLIGHT_LIMIT_VAL 20 // limited to 20 from circa 255, comment out to restore full brightness
 #endif
 
 #endif

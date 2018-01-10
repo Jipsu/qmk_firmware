@@ -1,27 +1,69 @@
 #ifndef KB_H
 #define KB_H
 
+#define LEADER_TIMEOUT 800
+
 #include "quantum.h"
+
+// Layers
+
+#define TXT 0 // black, no rgb
+#define WASD 1 // red_dark
+#define WASD2 2 // red
+#define CK 3 // cyan_dark
+#define CK2 4 // cyan
+#define STEL 5 // purple_dark
+#define XCOM 6 // yellow_dark
+#define SHOG 7 // orange_dark
+#define SHOG2 8 // orange
+#define TXT2 9 // copy of txt for TG game access, gray_dark
+#define NUM 10 // green_dark
+#define MOUSE 11 // gray
+#define SYM 12 // symbols, blue_dark
+#define NAV 13 // navigation and text manipulation, red_dark
+#define MDLOB 14 // markdown, accents and lobby to game layouts, yellow
+#define FENT 15 // F-keys, enter, tab and math operators, purple
+
+// Layer colours, affects all leds. To be used as a flash on layer change.
+
+#define rgb_black       rgblight_setrgb (0x00, 0x00, 0x00);
+#define rgb_gray_dark   rgblight_setrgb (0x03, 0x03, 0x03);
+#define rgb_gray        rgblight_setrgb (0x25, 0x25, 0x25);
+#define rgb_red_dark    rgblight_setrgb (0x05, 0x00, 0x00);
+#define rgb_red         rgblight_setrgb (0x1a, 0x00, 0x00);
+#define rgb_orange_dark rgblight_setrgb (0x09, 0x01, 0x00);
+#define rgb_orange      rgblight_setrgb (0x1e, 0x16, 0x00);
+#define rgb_yellow_dark rgblight_setrgb (0x05, 0x05, 0x00);
+#define rgb_yellow      rgblight_setrgb (0x1a, 0x1a, 0x00);
+#define rgb_green_dark  rgblight_setrgb (0x00, 0x05, 0x00);
+#define rgb_cyan_dark   rgblight_setrgb (0x00, 0x05, 0x05);
+#define rgb_cyan        rgblight_setrgb (0x00, 0x1a, 0x1a);
+#define rgb_blue_dark   rgblight_setrgb (0x00, 0x00, 0x05);
+#define rgb_purple_dark rgblight_setrgb (0x01, 0x00, 0x09);
+#define rgb_purple      rgblight_setrgb (0x16, 0x00, 0x1e);
+
+// Layer colours, affects only the first led of 16. Used as stationary indicator.
+
+#define rgb_at_black       rgblight_setrgb_at (0x00, 0x00, 0x00, 0);
+#define rgb_at_gray_dark   rgblight_setrgb_at (0x03, 0x03, 0x03, 0);
+#define rgb_at_gray        rgblight_setrgb_at (0x25, 0x25, 0x25, 0);
+#define rgb_at_red_dark    rgblight_setrgb_at (0x05, 0x00, 0x00, 0);
+#define rgb_at_red         rgblight_setrgb_at (0x1a, 0x00, 0x00, 0);
+#define rgb_at_orange_dark rgblight_setrgb_at (0x09, 0x01, 0x00, 0);
+#define rgb_at_orange      rgblight_setrgb_at (0x1e, 0x16, 0x00, 0);
+#define rgb_at_yellow_dark rgblight_setrgb_at (0x05, 0x05, 0x00, 0);
+#define rgb_at_yellow      rgblight_setrgb_at (0x1a, 0x1a, 0x00, 0);
+#define rgb_at_green_dark  rgblight_setrgb_at (0x00, 0x05, 0x00, 0);
+#define rgb_at_cyan_dark   rgblight_setrgb_at (0x00, 0x05, 0x05, 0);
+#define rgb_at_cyan        rgblight_setrgb_at (0x00, 0x1a, 0x1a, 0);
+#define rgb_at_blue_dark   rgblight_setrgb_at (0x00, 0x00, 0x05, 0);
+#define rgb_at_purple_dark rgblight_setrgb_at (0x01, 0x00, 0x09, 0);
+#define rgb_at_purple      rgblight_setrgb_at (0x16, 0x00, 0x1e, 0);
+
+// Oneshot modifiers and conveniences
 
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
-#define TXT 0 // leaders not implemented!
-#define WASD 1 // leader g w / p w
-#define WASD2 2 // 
-#define CK 3 // leader g c / p c
-#define CK2 4 // 
-#define STEL 5 // leader g s / p s
-#define XCOM 6 // leader g x / p x
-#define SHOG 7 // leader g t / p t
-#define SHOG2 8 // 
-#define TXT2 9 // copy of txt for TG game access
-#define NUM 10 // leader n
-#define MOUSE 11 // leader m
-#define SYM 12 // symbols
-#define NAV 13 // navigation and text manipulation, leader t
-#define MDLOB 14 // markdown, accents, lobby to game layouts
-#define FENT 15 // F-keys, enter, tab, math operators 
-
 #define OSM_SFT OSM(MOD_LSFT)
 #define OSM_ALT OSM(MOD_LALT)
 #define OSM_CTL OSM(MOD_LCTL)
@@ -31,6 +73,8 @@
 #define ATAB LALT(KC_TAB)
 #define STAB LSFT(KC_TAB)
 #define STEAM MEH(KC_O) // steam overlay
+
+// Finnish keymaps, missing currency sign, half sign and maybe something else.
 
 #define FI_O KC_SCLN  // ö
 #define FI_A KC_QUOT  // ä
@@ -72,17 +116,21 @@
 #define FI_ACUTE KC_EQL // ´
 #define FI_GRAVE LSFT(KC_EQL) // `
 
+// Text editing
+
 #define DOC_END LCTL(KC_END) // siirry loppuun
 #define DOC_HOME LCTL(KC_HOME) // siirry alkuun
 #define PARA_UP LCTL(KC_UP) // siirry kappale ylös
 #define PARA_DN LCTL(KC_DOWN) // siirry kappale alas
 #define WRD_LEFT LCTL(KC_LEFT) // siirry sana vasemmalle
 #define WRD_RGHT LCTL(KC_RGHT) // siirry sana oikealle
-#define CUT LCTL(KC_X) // 
-#define COPY LCTL(KC_C) // 
-#define PASTE LCTL(KC_V) // 
-#define UNDO LCTL(KC_Z) // 
-#define REDO LCTL(KC_Y) // 
+#define CUT LCTL(KC_X) // cut
+#define COPY LCTL(KC_C) // copy
+#define PASTE LCTL(KC_V) // paste
+#define UNDO LCTL(KC_Z) // undo
+#define REDO LCTL(KC_Y) // redo
+
+// Macro names
 
 enum custom_keycodes {
     ENDASH = SAFE_RANGE,
@@ -106,6 +154,8 @@ enum custom_keycodes {
 	CUTWRD_V,
 	CUTWRD_O
 };
+
+// Keymap matrix for Shortcut v0.5, beta edition without pinky issue.
 
 #define KEYMAP( \
 	K000, K001, K002, K003, K004, K005, K006, K007, K008, K009, K010, K011, K012, K013, \
